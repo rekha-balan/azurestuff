@@ -1,0 +1,3 @@
+{
+  "commandToExecute": "ifconfig && sudo iptables -L"
+}
