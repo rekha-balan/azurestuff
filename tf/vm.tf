@@ -49,11 +49,11 @@ resource "azurerm_managed_disk" "test" {
   resource_group_name  = "${azurerm_resource_group.test.name}"
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"
-  disk_size_gb         = "1023"
+  disk_size_gb         = "5"
 }
 
 resource "azurerm_virtual_machine" "test" {
-  count                 = 2
+  count                 = 1
   name                  = "acctvm${count.index}"
   location              = "West US 2"
   resource_group_name   = "${azurerm_resource_group.test.name}"
@@ -69,7 +69,7 @@ resource "azurerm_virtual_machine" "test" {
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "14.04-LTS"
     version   = "latest"
   }
 
@@ -87,7 +87,7 @@ resource "azurerm_virtual_machine" "test" {
     managed_disk_type = "Standard_LRS"
     create_option     = "Empty"
     lun               = 0
-    disk_size_gb      = "1023"
+    disk_size_gb      = "5"
   }
 
   storage_data_disk {
@@ -147,7 +147,7 @@ resource "azurerm_virtual_machine_extension" "test" {
   name                 = "hostname"
   location             = "West US 2" 
   resource_group_name  = "${azurerm_resource_group.test.name}"
-  virtual_machine_name = "${azurerm_virtual_machine.test.name}"
+  virtual_machine_name = "acctvm${count.index}"
   publisher            = "Microsoft.OSTCExtensions"
   type                 = "CustomScriptForLinux"
   type_handler_version = "1.2"
