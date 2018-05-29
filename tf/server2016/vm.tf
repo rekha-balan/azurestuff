@@ -16,7 +16,7 @@ variable "vmcount" {
 
 
 resource "azurerm_resource_group" "test" {
-  name     = "winacctestrg"
+  name     = "winacctest-rg"
   location =  "${var.location}"
 }
 
@@ -84,7 +84,7 @@ resource "azurerm_managed_disk" "test" {
   resource_group_name  = "${azurerm_resource_group.test.name}"
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"
-  disk_size_gb         = "1023"
+  disk_size_gb         = "1"
 }
 
 resource "azurerm_virtual_machine" "test" {
@@ -126,7 +126,7 @@ resource "azurerm_virtual_machine" "test" {
     managed_disk_type = "Standard_LRS"
     create_option     = "Empty"
     lun               = 0
-    disk_size_gb      = "1023"
+    disk_size_gb      = "1"
   }
 
   storage_data_disk {
