@@ -144,6 +144,7 @@ resource "azurerm_virtual_machine" "test" {
   }
 
   os_profile_windows_config {
+    provision_vm_agent = "true"
     }
     
   tags {
