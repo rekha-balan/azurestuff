@@ -90,7 +90,7 @@ resource "azurerm_managed_disk" "test" {
  resource_group_name  = "${azurerm_resource_group.test.name}"
  storage_account_type = "Standard_LRS"
  create_option        = "Empty"
- disk_size_gb         = "1"
+ disk_size_gb         = "5"
 }
 
 resource "azurerm_availability_set" "avset" {
@@ -168,7 +168,7 @@ resource "azurerm_virtual_machine" "test" {
    managed_disk_type = "Standard_LRS"
    create_option     = "Empty"
    lun               = 0
-   disk_size_gb      = "1"
+   disk_size_gb      = "5"
  }
 
  storage_data_disk {
