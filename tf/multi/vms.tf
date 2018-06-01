@@ -152,7 +152,7 @@ resource "azurerm_virtual_machine" "test" {
    publisher = "Canonical"
    offer     = "UbuntuServer"
    sku       = "16.04-LTS"
-   version   = "latest"
+   version   = "16.04.201802220"
  }
 
  storage_os_disk {
